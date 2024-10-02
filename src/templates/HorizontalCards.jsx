@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import noImage from "/no-img.jpg";
 
 const HorizontalCards = ({ data }) => {
   return (
@@ -10,13 +11,17 @@ const HorizontalCards = ({ data }) => {
             to={`/${d.media_type}/details/${d.id}`}
             key={i}
             target="_blank"
-            className="min-w-[15%] mr-4 bg-zinc-600 rounded-sm backdrop-blur-md bg-opacity-20 overflow-hidden p-1 mb-3"
+            className="min-w-[15%] max-h-[45vh] mr-4 bg-zinc-600 rounded-sm backdrop-blur-md bg-opacity-20 overflow-hidden p-1 mb-3"
           >
             <img
               className="object-cover h-[45%] w-full rounded-tr-sm rounded-tl-sm"
-              src={`https://image.tmdb.org/t/p/original/${
+              src={
                 d.backdrop_path || d.poster_path
-              }`}
+                  ? `https://image.tmdb.org/t/p/original/${
+                      d.backdrop_path || d.poster_path
+                    }`
+                  : noImage
+              }
               alt={d.title}
             />
             <div className="text-white h-[55%]">

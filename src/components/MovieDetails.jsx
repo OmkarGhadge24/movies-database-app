@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
+import {
+  Link,
+  Outlet,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import { asyncloadmovie, removeMovie } from "../store/actions/movieActions";
 import { IoMdHome } from "react-icons/io";
 import { FaWikipediaW } from "react-icons/fa";
@@ -9,11 +15,12 @@ import Loader from "./Loader";
 import HorizontalCards from "../templates/HorizontalCards";
 
 const MovieDetails = () => {
+  document.title = "MDB | Movie Details";
   const { pathname } = useLocation();
   const { id } = useParams();
   const dispatch = useDispatch();
   const { info } = useSelector((state) => state.movie);
-  console.log(info)
+  // console.log(info);
   const navigate = useNavigate();
   useEffect(() => {
     dispatch(asyncloadmovie(id));
@@ -31,7 +38,7 @@ const MovieDetails = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
-      className="w-screen relative h-[150vh] px-[6%]"
+      className="w-screen relative h-[160vh] px-[6%]"
     >
       {/* Part 1 */}
       <nav className="w-full text-white flex gap-10 text-2xl h-[8vh] items-center">
@@ -72,7 +79,7 @@ const MovieDetails = () => {
               info.detail.original_name ||
               info.detail.original_title}
 
-            <small className="text-xl font-bold text-zinc-200">
+            <small className="text-xl font-bold text-zinc-200 ml-2">
               ({info.detail.release_date.split("-")[0]})
             </small>
           </h1>
@@ -181,7 +188,9 @@ const MovieDetails = () => {
 
         <div className="w-[76%]">
           <hr className="mt-6 mb-4 border-none h-[2px] bg-zinc-500" />
-          <h1 className="text-3xl font-bold text-white mb-2 ml-4">Recommendations</h1>
+          <h1 className="text-3xl font-bold text-white mb-2 ml-4">
+            Recommendations
+          </h1>
           <HorizontalCards
             data={
               info.recommendations.length > 0

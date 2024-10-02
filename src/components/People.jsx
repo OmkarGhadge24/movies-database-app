@@ -44,7 +44,7 @@ const People = () => {
   return person.length > 0 ? (
     <div className="w-screen h-screen">
       <div className="w-full flex items-center justify-between px-[3%]">
-        <h1 className="text-2xl text-zinc-400 font-semibold">
+        <h1 className="text-2xl text-zinc-400 font-semibold ml-2">
           <Link onClick={() => navigate(-1)}>
             {" "}
             <i className="hover:text-[#6556CD] ri-arrow-left-line mr-4"></i>
